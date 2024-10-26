@@ -51,6 +51,22 @@
       "type": "text",
       "action": "add",
       "args": {
+        "name": "all-youtube",
+        "uri": "https://iplist.opencck.org/?format=text&data=ip4&site=youtube.com"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "all-youtube-cidr4",
+        "uri": "https://iplist.opencck.org/?format=text&data=cidr4&site=youtube.com"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
         "name": "phleesty",
         "uri": "./myips.txt"
       }
@@ -107,7 +123,8 @@
           "ddos-guard",
           "yandex",
           "twitter",
-          "all-discord"
+          "all-discord",
+          "all-youtube"
         ]
       }
     },
@@ -157,7 +174,8 @@
           "yandex",
           "twitter",
           "phleesty",
-          "all-discord"
+          "all-discord",
+          "all-youtube"
         ]
       }
     },
@@ -178,7 +196,8 @@
           "ddos-guard",
           "yandex",
           "twitter",
-          "all-discord"
+          "all-discord",
+          "all-youtube"
         ]
       }
     },
