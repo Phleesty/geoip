@@ -10,6 +10,7 @@ on:
       - ".gitignore"
       - "LICENSE*"
       - "*.md"
+
 jobs:
   build:
     name: Build
@@ -41,6 +42,12 @@ jobs:
         run: |
           go build -C geoip ./
           ./geoip/geoip convert -c ./config.json
+
+      - name: Remove specified IPs from geoip.dat
+        run: |
+          if [ -f ./output/geoip.dat ]; then
+            grep -vFf remove.txt ./output/geoip.dat > ./output/geoip-clean.dat && mv ./output/geoip-clean.dat ./output/geoip.dat
+          fi
 
       - name: Verify mmdb files
         run: |
