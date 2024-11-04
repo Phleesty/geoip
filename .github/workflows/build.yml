@@ -10,7 +10,6 @@ on:
       - ".gitignore"
       - "LICENSE*"
       - "*.md"
-
 jobs:
   build:
     name: Build
@@ -42,27 +41,6 @@ jobs:
         run: |
           go build -C geoip ./
           ./geoip/geoip convert -c ./config.json
-        shell: bash
-
-      - name: List files after build
-        run: |
-          echo "Files after build:"
-          ls -R ./output
-        shell: bash
-
-      - name: Remove specified IPs from geoip.dat
-        run: |
-          if [ -f ./output/geoip.dat ]; then
-            grep -vFf remove.txt ./output/geoip.dat > ./output/geoip-temp.dat
-            mv ./output/geoip-temp.dat ./output/geoip.dat
-          fi
-        shell: bash
-
-      - name: List files after IP removal
-        run: |
-          echo "Files after removing IPs:"
-          ls -R ./output
-        shell: bash
 
       - name: Verify mmdb files
         run: |
@@ -71,7 +49,6 @@ jobs:
           for name in $(ls *.mmdb); do
             $(go env GOPATH)/bin/mmdbverify -file ${name}
           done
-        shell: bash
 
       - name: Generate sha256 checksum for dat files
         run: |
@@ -79,7 +56,6 @@ jobs:
           for name in $(ls *.dat); do
             sha256sum ${name} > ./${name}.sha256sum
           done
-        shell: bash
 
       - name: Generate sha256 checksum for mmdb files
         run: |
@@ -87,13 +63,6 @@ jobs:
           for name in $(ls *.mmdb); do
             sha256sum ${name} > ./${name}.sha256sum
           done
-        shell: bash
-
-      - name: List files before release branch push
-        run: |
-          echo "Files before pushing to release branch:"
-          ls -R ./output
-        shell: bash
 
       - name: Git push assets to "release" branch
         run: |
@@ -106,7 +75,6 @@ jobs:
           git commit -m "${{ env.RELEASE_NAME }}"
           git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u geoip release
-        shell: bash
 
       - name: Purge jsdelivr CDN
         run: |
@@ -114,7 +82,6 @@ jobs:
           for file in $(ls); do
             curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
-        shell: bash
 
       - name: Remove some files to avoid publishing to GitHub release
         run: |
@@ -123,13 +90,6 @@ jobs:
           rm -rf ./output/GeoLite2-*.mmdb
           rm -rf ./output/GeoLite2-*.sha256sum
           rm -rf ./output/{clash,dat,mrs,nginx,srs,surge,text}
-        shell: bash
-
-      - name: List files before uploading to release
-        run: |
-          echo "Files before uploading to GitHub release:"
-          ls -R ./output
-        shell: bash
 
       - name: Upload files to GitHub release
         uses: svenstaro/upload-release-action@v2
