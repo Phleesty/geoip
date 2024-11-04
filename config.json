@@ -11,9 +11,11 @@
       "type": "text",
       "action": "remove",
       "args": {
-        "uri": "./remove.txt"
+        "inputDir": "./",
+        "name": "remove.txt"
       }
-    },
+    }
+  ],
     {
       "type": "text",
       "action": "add",
