@@ -9,13 +9,6 @@
     },
     {
       "type": "text",
-      "action": "remove",
-      "args": {
-        "uri": "https://github.com/Phleesty/geoip/remove.txt"
-      }
-    },
-    {
-      "type": "text",
       "action": "add",
       "args": {
         "name": "ru-blocked",
@@ -76,6 +69,14 @@
       "args": {
         "name": "phleesty",
         "uri": "./myips.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "remove",
+      "args": {
+        "name": "remove",
+        "uri": "./remove.txt"
       }
     },
     {
