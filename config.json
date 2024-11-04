@@ -9,6 +9,13 @@
     },
     {
       "type": "text",
+      "action": "remove",  // Используем "remove", чтобы исключить адреса из remove.txt
+      "args": {
+        "uri": "./remove.txt"
+      }
+    },
+    {
+      "type": "text",
       "action": "add",
       "args": {
         "name": "ru-blocked",
