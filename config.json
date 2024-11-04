@@ -11,8 +11,7 @@
       "type": "text",
       "action": "remove",
       "args": {
-        "inputDir": "./",
-        "name": "remove.txt"
+        "uri": "https://github.com/Phleesty/geoip/remove.txt"
       }
     },
     {
