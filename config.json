@@ -15,7 +15,6 @@
         "name": "remove.txt"
       }
     },
-  ],
     {
       "type": "text",
       "action": "add",
