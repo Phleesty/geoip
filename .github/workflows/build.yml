@@ -10,7 +10,6 @@ on:
       - ".gitignore"
       - "LICENSE*"
       - "*.md"
-
 jobs:
   build:
     name: Build
@@ -42,25 +41,6 @@ jobs:
         run: |
           go build -C geoip ./
           ./geoip/geoip convert -c ./config.json
-
-      - name: Remove specified IPs from geoip.dat
-        run: |
-          if [ -f ./output/geoip.dat ]; then
-            echo "Modifying geoip.dat..."
-            grep -vFf remove.txt ./output/geoip.dat > ./output/geoip-clean.dat && mv ./output/geoip-clean.dat ./output/geoip.dat
-            # Проверяем, что файл был создан
-            if [ -f ./output/geoip.dat ]; then
-              echo "geoip.dat successfully modified and exists in output."
-              ls -lh ./output/geoip.dat  # Вывод размера файла
-              head -n 10 ./output/geoip.dat  # Просмотр первых строк файла для проверки содержимого
-            else
-              echo "Error: geoip.dat was not found after modification."
-              exit 1
-            fi
-          else
-            echo "geoip.dat does not exist in the output directory."
-            exit 1
-          fi
 
       - name: Verify mmdb files
         run: |
