@@ -46,7 +46,8 @@ jobs:
         run: |
           if [ -f ./remove.txt ]; then
             while IFS= read -r ip; do
-              sed -i "/$ip/d" ./output/geoip.dat
+              # Используем | как разделитель, чтобы избежать конфликтов с /
+              sed -i "|$ip|d" ./output/geoip.dat
             done < ./remove.txt
           else
             echo "Файл remove.txt не найден."
