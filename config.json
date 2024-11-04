@@ -9,7 +9,7 @@
     },
     {
       "type": "text",
-      "action": "remove",  // Используем "remove", чтобы исключить адреса из remove.txt
+      "action": "remove",
       "args": {
         "uri": "./remove.txt"
       }
