@@ -46,7 +46,8 @@ jobs:
       - name: Remove specified IPs from geoip.dat
         run: |
           if [ -f ./output/geoip.dat ]; then
-            grep -vFf remove.txt ./output/geoip.dat > ./output/geoip-clean.dat && mv ./output/geoip-clean.dat ./output/geoip.dat
+            grep -vFf remove.txt ./output/geoip.dat > ./output/geoip-temp.dat
+            mv ./output/geoip-temp.dat ./output/geoip.dat
           fi
 
       - name: Verify mmdb files
