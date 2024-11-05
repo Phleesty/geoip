@@ -42,18 +42,6 @@ jobs:
           go build -C geoip ./
           ./geoip/geoip convert -c ./config.json
 
-      - name: Remove specific IPs from geoip.dat
-        run: |
-          if [ -f ./remove.txt ]; then
-            while IFS= read -r ip; do
-              # Экранируем / в ip
-              escaped_ip=$(echo "$ip" | sed 's|/|\\/|g')
-              sed -i "/$escaped_ip/d" ./output/geoip.dat
-            done < ./remove.txt
-          else
-            echo "Файл remove.txt не найден."
-          fi
-
       - name: Verify mmdb files
         run: |
           cd ./output || exit 1
