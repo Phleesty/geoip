@@ -107,6 +107,14 @@
       }
     },
     {
+      "type": "text",
+      "action": "output",
+      "args": {
+        "outputDir": "./output",
+        "outputName": "geoip.txt"
+      }
+    },
+    {
       "type": "v2rayGeoIPDat",
       "action": "output",
       "args": {
