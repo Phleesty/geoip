@@ -111,7 +111,8 @@
       "action": "output",
       "args": {
         "outputDir": "./output",
-        "outputName": "geoip.txt"
+        "outputName": "geoip.txt",
+        "wantedList": ["ru-blocked", "ru-blocked-community", "re-filter", "phleesty"]
       }
     },
     {
