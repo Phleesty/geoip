@@ -72,6 +72,22 @@
       }
     },
     {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "phleesty-block",
+        "uri": "./phleesty-block.txt"
+      }
+    },
+    {
+      "type": "text",
+      "action": "add",
+      "args": {
+        "name": "phleesty-direct",
+        "uri": "./phleesty-direct.txt"
+      }
+    },
+    {
       "type": "maxmindGeoLite2ASNCSV",
       "action": "add",
       "args": {
